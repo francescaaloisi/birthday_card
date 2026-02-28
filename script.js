@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let audioContext;
     let micStream;
     let analyser;
-    let blowThreshold = 110;
+    let blowThreshold = 40;
     let flameOpacity = 1;
 
     // function to start blow detection
