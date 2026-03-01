@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } */
 
     // personalized name
-    var user = "Giulio";
+    var user = "Giu";
 
     document.title = "Tanti Auguri " + user + "!";
     document.querySelector("h1").textContent = "Tanti Auguri " + user + "!";
@@ -30,8 +30,14 @@ document.addEventListener("DOMContentLoaded", function() {
     let audioContext;
     let micStream;
     let analyser;
-    let blowThreshold = 40;
     let flameOpacity = 1;
+    let blowThreshold = 110; // for computer
+    let flameReduction = 0.05; // for computer
+    
+    if(/iPhone/i.test(navigator.userAgent)){
+        blowThreshold = 25;
+        flameReduction = 0.15;
+    }
 
     // function to start blow detection
     function startBlowDetection() {
@@ -74,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // check if averageAmplitude is greater than blowThreshold
             if (averageAmplitude > blowThreshold) {
                 // decrease flame opacity
-                flameOpacity -= 0.05; 
+                flameOpacity -= flameReduction; 
                 if (flameOpacity < 0) {
                     flameOpacity = 0;
                 }
