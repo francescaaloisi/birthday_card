@@ -67,31 +67,30 @@ document.addEventListener("DOMContentLoaded", function() {
         const buffer = analyser.frequencyBinCount;
         const data = new Uint8Array(buffer);
 
-        function detectBlow() {
-            analyser.getByteFrequencyData(data);
+    function detectBlow() {
+        analyser.getByteFrequencyData(data);
 
-            // calculate the average amplitude
-            let s = 0; // sum
-            for (let i = 0; i < buffer; i++) {
-                s += data[i];
-            }
-            const averageAmplitude = s / buffer;
-
-            // check if averageAmplitude is greater than blowThreshold
-            if (averageAmplitude > blowThreshold) {
-                // decrease flame opacity
-                flameOpacity -= flameReduction; 
-                if (flameOpacity < 0) {
-                    flameOpacity = 0;
-                    flame.style.display = "none"; // it hides the flame
-                    makeAWishEffect(); // now you can see the star animation
-                }
-                flame.style.opacity = flameOpacity;
-            }
-
-            // schedule next detection loop
-            requestAnimationFrame(detectBlow);
+        let s = 0;
+        for (let i = 0; i < buffer; i++) {
+            s += data[i];
         }
+        const averageAmplitude = s / buffer;
+
+        if (averageAmplitude > blowThreshold && flameOpacity > 0) {
+            flameOpacity -= flameReduction; 
+                
+            if (flameOpacity <= 0) {
+                flameOpacity = 0;
+                flame.style.display = "none"; // it hides the flame
+
+                triggerConfetti(); 
+            
+            }
+            flame.style.opacity = flameOpacity;
+        }
+
+        requestAnimationFrame(detectBlow);
+    }
 
         // detection loop
         detectBlow();
@@ -165,23 +164,20 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// stars animation
-function makeAWishEffect() {
-        const giftContainer = document.querySelector('.gift-container');
-        for (let i = 0; i < 15; i++) {
-            setTimeout(() => {
-                const star = document.createElement('div');
-                star.className = 'wish-star';
-                star.innerHTML = '✨';
-                // it puts the stars near the cake
-                star.style.left = (window.innerWidth / 2 + (Math.random() * 100 - 50)) + 'px';
-                star.style.top = (window.innerHeight / 2) + 'px';
-                document.body.appendChild(star);
-                
-                // remuve the star after the animation
-                setTimeout(() => star.remove(), 2000);
-            }, i * 150);
+function triggerConfetti() {
+        // it uses the library "canvas-confetti" in the HTML file
+        confetti({
+            particleCount: 150, // how many 
+            spread: 70,          // how much they spread
+            origin: { y: 0.6 },  // 0.6 = middle of the screen
+            colors: ['#35a2d4', '#1adf58', '#FFD700', '#ff69b4'], 
+            ticks: 300           // time on screen
+        });
+
+        // it changes the text on the screen after the wish
+        const wishText = document.querySelector(".gift-container h3");
+        if (wishText) {
+            wishText.textContent = "Make a wish! ✨🎂";
+            wishText.style.color = "#FFD700";
         }
-        // Cambia il testo del desiderio
-        document.querySelector('.gift-container h3').textContent = "your wish will be granted! 🎂";
     }
