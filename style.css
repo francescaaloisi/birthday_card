@@ -317,3 +317,22 @@ h1 {
     position: relative;
     z-index: 5;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.birthday-cake-container {
+    position: relative;
+    margin: 60px 0;
+    z-index: 1;
+}
+
+.instructions-container,
+#instructions,
+.gift-container {
+    position: relative;
+    z-index: 2;
+}
