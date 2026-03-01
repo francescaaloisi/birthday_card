@@ -82,8 +82,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (flameOpacity <= 0) {
                 flameOpacity = 0;
                 flame.style.display = "none"; // it hides the flame
-
-                triggerConfetti(); 
             
             }
             flame.style.opacity = flameOpacity;
@@ -163,21 +161,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-
-function triggerConfetti() {
-        // it uses the library "canvas-confetti" in the HTML file
-        confetti({
-            particleCount: 150, // how many 
-            spread: 70,          // how much they spread
-            origin: { y: 0.6 },  // 0.6 = middle of the screen
-            colors: ['#35a2d4', '#1adf58', '#FFD700', '#ff69b4'], 
-            ticks: 300           // time on screen
-        });
-
-        // it changes the text on the screen after the wish
-        const wishText = document.querySelector(".gift-container h3");
-        if (wishText) {
-            wishText.textContent = "Make a wish! ✨🎂";
-            wishText.style.color = "#FFD700";
-        }
-    }
