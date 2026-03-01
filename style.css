@@ -161,178 +161,117 @@ width: 500px;
 
 /* iphone friendly version */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #2e2e2e;
     margin: 0;
-    padding: 0;
-    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box; /* for the padding on mobile */
 }
 
 h1 {
     color: #e8e8e8;
-    margin-top: 30px;
+    margin: 20px 0;
+    font-size: 1.8rem;
 }
 
-/* buttons */
-.instructions-container {
-    margin: 20px auto;
+.instructions-container, #instructions {
     color: #d3d3d3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 10;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .instructions-container button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 16px;
     background-color: #494949;
     color: #acacac;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 8px;
     margin: 10px;
+    cursor: pointer;
 }
 
-.instructions-container button:hover {
-    background-color: #2f2f2f;
-}
-
-#instructions {
-    margin: 10px auto;
-    color: white;
-    position: relative;
-    z-index: 10;
-}
-
-/*cake*/
+/* cake */
 .birthday-cake-container {
     position: relative;
-    width: 100%;
-    max-width: 400px;
-    margin: 60px auto 40px auto;
+    width: 250px; /* smaler for mobile */
+    margin: 100px auto 40px auto; /* space between the top of the candle and the flame */
 }
 
 #birthday-cake {
     width: 100%;
-    height: 200px;
+    height: 150px;
     background-color: #f5ddbe;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    position: relative;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 #icing {
     width: 100%;
-    height: 60px;
+    height: 40px;
     background-color: #35a2d4;
     position: absolute;
-    top: -60px;
-    left: 0;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    top: -20px;
+    border-radius: 15px 15px 0 0;
 }
 
-/* cake's top */
 .birthday-cake-top {
     position: absolute;
-    top: -120px;
+    top: -90px; /* it puts the candle over the top */
     left: 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-/* candle */
-#candle {
-    background-color: #1adf58;
-    width: 18px;
-    height: 70px;
-    border-radius: 5px;
-    position: relative;
-}
-
-/* flame */
-#flame {
-    position: absolute;
-    top: -35px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: orange;
-    width: 18px;
-    height: 30px;
-    border-radius: 50%;
-    box-shadow:
-        0 0 10px orange,
-        0 0 20px orange;
-    animation: flicker 1s ease-in-out infinite alternate;
-}
-
-@keyframes flicker {
-    0% { transform: translateX(-50%) scale(1); }
-    100% { transform: translateX(-50%) scale(1.1); }
-}
-
-.gift-container {
-    margin-top: 40px;
-    color: white;
-}
-
-/* extra fix for mobile*/
-@media (max-width: 480px) {
-
-    h1 {
-        font-size: 22px;
-    }
-
-    .instructions-container button {
-        width: 80%;
-        font-size: 14px;
-    }
-
-    #birthday-cake {
-        height: 180px;
-    }
-
-    #icing {
-        height: 60px;
-        top: -60px;
-    }
-
-    #candle {
-        height: 60px;
-    }
-
-    #flame {
-        height: 30px;
-    }
-}
-
-/* to prevent text from overlapping the animation on the mobile */
-.instructions-container,
-#instructions,
-.gift-container {
-    position: relative;
-    z-index: 5;
-}
-
-body {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.birthday-cake-container {
+#candle {
+    background-color: #1adf58;
+    width: 15px;
+    height: 70px;
+    border-radius: 4px;
     position: relative;
-    margin: 60px 0;
-    z-index: 1;
 }
 
-.instructions-container,
-#instructions,
+#flame {
+    position: absolute;
+    top: -35px;
+    width: 20px;
+    height: 35px;
+    background-color: orange;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px orange, 0 0 30px yellow;
+    animation: flicker 0.6s infinite alternate;
+}
+
+@keyframes flicker {
+    from { transform: scale(1); opacity: 0.9; }
+    to { transform: scale(1.1); opacity: 1; }
+}
+
 .gift-container {
-    position: relative;
-    z-index: 2;
+    margin-top: auto; /* to push the gift at the bottom */
+    padding-bottom: 20px;
+    color: white;
+}
+
+/* stars animation */
+.wish-star {
+    position: absolute;
+    color: gold;
+    font-size: 20px;
+    user-select: none;
+    pointer-events: none;
+    animation: flyUp 2s linear forwards;
+    z-index: 100;
+}
+
+@keyframes flyUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-200px) scale(0); opacity: 0; }
 }
