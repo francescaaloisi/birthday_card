@@ -83,6 +83,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 flameOpacity -= flameReduction; 
                 if (flameOpacity < 0) {
                     flameOpacity = 0;
+                    flame.style.display = "none"; // it hides the flame
+                    makeAWishEffect(); // now you can see the star animation
                 }
                 flame.style.opacity = flameOpacity;
             }
@@ -162,3 +164,24 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+// stars animation
+function makeAWishEffect() {
+        const giftContainer = document.querySelector('.gift-container');
+        for (let i = 0; i < 15; i++) {
+            setTimeout(() => {
+                const star = document.createElement('div');
+                star.className = 'wish-star';
+                star.innerHTML = '✨';
+                // it puts the stars near the cake
+                star.style.left = (window.innerWidth / 2 + (Math.random() * 100 - 50)) + 'px';
+                star.style.top = (window.innerHeight / 2) + 'px';
+                document.body.appendChild(star);
+                
+                // remuve the star after the animation
+                setTimeout(() => star.remove(), 2000);
+            }, i * 150);
+        }
+        // Cambia il testo del desiderio
+        document.querySelector('.gift-container h3').textContent = "your wish will be granted! 🎂";
+    }
