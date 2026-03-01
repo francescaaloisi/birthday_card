@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: #2e2e2e;
     margin: 0;
@@ -157,4 +157,161 @@ width: 500px;
             0 0 20px rgba(orange, 0.5),
             0 0 60px rgba(orange, 0.5),
             0 0 80px rgba(orange, 0.5) }
+    } */
+
+/* iphone friendly version */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2e2e2e;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #e8e8e8;
+    margin-top: 30px;
+}
+
+/* buttons */
+.instructions-container {
+    margin: 20px auto;
+    color: #d3d3d3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.instructions-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #494949;
+    color: #acacac;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.instructions-container button:hover {
+    background-color: #2f2f2f;
+}
+
+#instructions {
+    margin: 10px auto;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+/* cake */
+.birthday-cake-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 80px;
+    position: relative;
+}
+
+/* cake's body */
+#birthday-cake {
+    width: 90%;
+    max-width: 500px;
+    height: 220px;
+    background-color: #f5ddbe;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* frosting */
+#icing {
+    width: 90%;
+    max-width: 500px;
+    height: 70px;
+    background-color: #35a2d4;
+    position: absolute;
+    top: -70px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* cake's top */
+.birthday-cake-top {
+    position: absolute;
+    bottom: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* candle */
+#candle {
+    background-color: #1adf58;
+    width: 20px;
+    height: 80px;
+    border-radius: 5px;
+    position: relative;
+}
+
+/* flame */
+#flame {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: orange;
+    width: 20px;
+    height: 35px;
+    border-radius: 50% 50% 50% 50%;
+    box-shadow: 
+        0 0 10px orange,
+        0 0 20px orange,
+        0 0 40px orange;
+    animation: flicker 1s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+    100% { transform: translateX(-50%) scale(0.95); }
+}
+
+
+.gift-container {
+    margin-top: 40px;
+    color: white;
+}
+
+/* extra fix for mobile*/
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 22px;
     }
+
+    .instructions-container button {
+        width: 80%;
+        font-size: 14px;
+    }
+
+    #birthday-cake {
+        height: 180px;
+    }
+
+    #icing {
+        height: 60px;
+        top: -60px;
+    }
+
+    #candle {
+        height: 60px;
+    }
+
+    #flame {
+        height: 30px;
+    }
+}
