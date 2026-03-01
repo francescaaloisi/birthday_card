@@ -82,8 +82,10 @@ document.addEventListener("DOMContentLoaded", function() {
             if (flameOpacity <= 0) {
                 flameOpacity = 0;
                 flame.style.display = "none"; // it hides the flame
-            
+                
+                document.querySelector(".gift-container h3").textContent = "Your wish will be granted! ✨";
             }
+            
             flame.style.opacity = flameOpacity;
         }
 
