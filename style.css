@@ -160,116 +160,106 @@ width: 500px;
     } */
 
 /* iphone friendly version */
+:root {
+    --cake-color: #fce4ec;
+    --icing-color: #f06292;
+    --candle-color: #4fc3f7;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2e2e2e;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #2e2e2e 0%, #1a1a1a 100%);
     margin: 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
     min-height: 100vh;
-    box-sizing: border-box; /* for the padding on mobile */
+    overflow-x: hidden;
 }
 
-h1 {
-    color: #e8e8e8;
-    margin: 20px 0;
-    font-size: 1.8rem;
-}
-
-.instructions-container, #instructions {
-    color: #d3d3d3;
-    text-align: center;
-    margin-bottom: 20px;
-}
+h1 { margin-top: 20px; font-size: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
 
 .instructions-container button {
-    padding: 12px 25px;
-    font-size: 16px;
-    background-color: #494949;
-    color: #acacac;
-    border: none;
-    border-radius: 8px;
+    padding: 12px 20px;
     margin: 10px;
-    cursor: pointer;
+    border-radius: 25px;
+    border: none;
+    background: #f06292;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(240, 98, 146, 0.4);
 }
 
 /* cake */
 .birthday-cake-container {
     position: relative;
-    width: 250px; /* smaler for mobile */
-    margin: 100px auto 40px auto; /* space between the top of the candle and the flame */
+    width: 280px;
+    margin: 120px auto 50px auto;
 }
 
 #birthday-cake {
     width: 100%;
-    height: 150px;
-    background-color: #f5ddbe;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    height: 160px;
+    background: var(--cake-color);
+    border-radius: 10px 10px 20px 20px;
+    position: relative;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
 }
 
 #icing {
     width: 100%;
-    height: 40px;
-    background-color: #35a2d4;
+    height: 50px;
+    background: var(--icing-color);
     position: absolute;
-    top: -20px;
-    border-radius: 15px 15px 0 0;
+    top: -25px;
+    border-radius: 20px 20px 5px 5px;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Topping (sprinkles) */
+.topping {
+    position: absolute;
+    z-index: 3;
 }
 
 .birthday-cake-top {
     position: absolute;
-    top: -90px; /* it puts the candle over the top */
-    left: 0;
+    top: -100px;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    z-index: 1;
 }
 
 #candle {
-    background-color: #1adf58;
-    width: 15px;
-    height: 70px;
+    width: 16px;
+    height: 80px;
+    background: var(--candle-color);
     border-radius: 4px;
-    position: relative;
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%);
+    background-size: 10px 10px;
 }
 
 #flame {
     position: absolute;
     top: -35px;
-    width: 20px;
+    width: 22px;
     height: 35px;
-    background-color: orange;
+    background: radial-gradient(circle at bottom, #ffeb3b, #ff9800, #f44336);
     border-radius: 50% 50% 20% 20%;
-    box-shadow: 0 0 15px orange, 0 0 30px yellow;
-    animation: flicker 0.6s infinite alternate;
+    box-shadow: 0 0 20px #ff9800;
+    animation: flicker 0.5s infinite alternate;
 }
 
 @keyframes flicker {
-    from { transform: scale(1); opacity: 0.9; }
-    to { transform: scale(1.1); opacity: 1; }
+    from { transform: scale(1) rotate(-1deg); }
+    to { transform: scale(1.1) rotate(1deg); }
 }
 
-.gift-container {
-    margin-top: auto; /* to push the gift at the bottom */
-    padding-bottom: 20px;
-    color: white;
-}
-
-/* stars animation */
-.wish-star {
-    position: absolute;
-    color: gold;
-    font-size: 20px;
-    user-select: none;
-    pointer-events: none;
-    animation: flyUp 2s linear forwards;
-    z-index: 100;
-}
+.gift-container { text-align: center; margin-top: 20px; }
 
 @keyframes flyUp {
     0% { transform: translateY(0) scale(1); opacity: 1; }
