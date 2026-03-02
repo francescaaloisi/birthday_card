@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let flameReduction = 0.05; // for computer
     
     if(/iPhone/i.test(navigator.userAgent)){
-        blowThreshold = 25;
+        blowThreshold = 40;
         flameReduction = 0.15;
     }
 
