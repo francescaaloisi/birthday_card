@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 flameOpacity = 0;
                 flame.style.display = "none"; // it hides the flame
                 
-                document.querySelector(".gift-container h3").textContent = "Il tuo desiderio sara' esaudito! ✨";
+                document.querySelector(".gift-container h3").textContent = "Il tuo desiderio sarà esaudito! ✨";
             }
             
             flame.style.opacity = flameOpacity;
