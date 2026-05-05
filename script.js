@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", function() {
     } */
 
     // personalized name
-    var user = "Giu";
+    var user = "Gio";
 
-    document.title = "Tanti Auguri " + user + "!";
-    document.querySelector("h1").textContent = "Tanti Auguri " + user + "!";
+    document.title = "Happy Birthday " + user + "!";
+    document.querySelector("h1").textContent = "Happy Birthday " + user + "!";
 
     // constant variables
     const mic = document.getElementById("mic");
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 flameOpacity = 0;
                 flame.style.display = "none"; // it hides the flame
                 
-                document.querySelector(".gift-container h3").textContent = "Il tuo desiderio sarà esaudito! ✨";
+                document.querySelector(".gift-container h3").textContent = "Your wish will be granted! ✨";
             }
             
             flame.style.opacity = flameOpacity;
